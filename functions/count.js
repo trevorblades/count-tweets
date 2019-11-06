@@ -1,7 +1,9 @@
 const axios = require('axios');
 const querystring = require('querystring');
 
-module.exports = async function countTweets({consumerKey, consumerSecret, q}) {
+exports.handler = async event => {
+  const {q, consumerKey, consumerSecret} = querystring.parse(event.body);
+
   // obtain bearer token
   const credentials = `${consumerKey}:${consumerSecret}`;
   const basicAuth = Buffer.from(credentials).toString('base64');
@@ -43,5 +45,8 @@ module.exports = async function countTweets({consumerKey, consumerSecret, q}) {
     count += response.data.statuses.length;
   }
 
-  return count;
+  return {
+    statusCode: 200,
+    body: count
+  };
 };
