@@ -9,6 +9,11 @@ exports.handler = async event => {
     };
   }
 
+  return {
+    statusCode: 200,
+    body: event.body
+  };
+
   const {q, consumerKey, consumerSecret} = querystring.parse(event.body);
 
   // obtain bearer token
