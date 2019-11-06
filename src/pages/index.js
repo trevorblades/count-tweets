@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {stringify} from 'querystring';
 
 export default function Index() {
   const [count, setCount] = useState(null);
@@ -9,18 +10,13 @@ export default function Index() {
     setLoading(true);
 
     const {q, consumerKey, consumerSecret} = event.target;
-    const body = JSON.stringify({
-      q: q.value,
-      consumerKey: consumerKey.value,
-      consumerSecret: consumerSecret.value
-    });
-
     const response = await fetch('/.netlify/functions/count', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body
+      body: stringify({
+        q: q.value,
+        consumerKey: consumerKey.value,
+        consumerSecret: consumerSecret.value
+      })
     });
 
     if (response.ok) {
