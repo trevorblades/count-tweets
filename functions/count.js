@@ -2,6 +2,13 @@ const axios = require('axios');
 const querystring = require('querystring');
 
 exports.handler = async event => {
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      body: 'Method Not Allowed'
+    };
+  }
+
   const {q, consumerKey, consumerSecret} = querystring.parse(event.body);
 
   // obtain bearer token
@@ -47,6 +54,6 @@ exports.handler = async event => {
 
   return {
     statusCode: 200,
-    body: count
+    body: count.toString()
   };
 };
