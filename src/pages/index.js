@@ -41,7 +41,7 @@ export default function Index() {
       </p>
       <p>
         <label>
-          Consumer secret: <input name="consumerSecret" />
+          Consumer secret: <input name="consumerSecret" type="password" />
         </label>
       </p>
       <button disabled={loading} type="submit">
