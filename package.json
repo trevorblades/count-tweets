@@ -7,15 +7,19 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node -r dotenv/config index.js"
   },
-  "keywords": ["twitter", "tweet", "count", "hashtag"],
+  "keywords": [
+    "twitter",
+    "tweet",
+    "count",
+    "hashtag"
+  ],
   "author": "Trevor Blades <tdblades@gmail.com>",
   "license": "ISC",
   "eslintConfig": {
     "extends": "@trevorblades"
   },
   "dependencies": {
-    "axios": "^0.19.0",
-    "dotenv": "^8.2.0"
+    "axios": "^0.19.0"
   },
   "devDependencies": {
     "@trevorblades/eslint-config": "^7.0.2",
