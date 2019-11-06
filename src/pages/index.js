@@ -8,10 +8,14 @@ export default function Index() {
     event.preventDefault();
     setLoading(true);
 
-    const body = new FormData(event.target);
+    const {q, consumerKey, consumerSecret} = event.target;
     const response = await fetch('/.netlify/functions/count', {
       method: 'POST',
-      body
+      body: JSON.stringify({
+        q: q.value,
+        consumerKey: consumerKey.value,
+        consumerSecret: consumerSecret.value
+      })
     });
 
     if (response.ok) {
